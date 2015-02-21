@@ -1,9 +1,13 @@
-var packet = require("../lib/telep-packet");
+var telep = require("../lib/telep-packet");
 
 describe("Packet Library", function() {
 
   beforeEach(function() {
-    packet.reset();
+    packet = new telep.Packet();
+  });
+
+  afterEach(function() {
+    packet = null;
   });
 
   describe("#reset", function() {
