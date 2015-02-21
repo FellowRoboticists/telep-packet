@@ -103,4 +103,23 @@ describe("Packet Library", function() {
 
   });
 
+  describe("#readFromBuffer", function() {
+
+    it ("returns true if the packet is complete and valid", function() {
+      var buffer = new Buffer([0x13, 0x02, 0xf2, 0xf3, 0xfa]);
+      expect(packet.readFromBuffer(buffer)).toBe(true);
+    });
+
+    it ("returns false if the checksum is invalid", function() {
+      var buffer = new Buffer([0x02, 0xf2, 0xf3, 0xfb]);
+      expect(packet.readFromBuffer(buffer)).toBe(false);
+    });
+
+    it ("returns false if the packet is not complete", function() {
+      var buffer = new Buffer([0x02, 0xf2, 0xf3]);
+      expect(packet.readFromBuffer(buffer)).toBe(false);
+    });
+
+  });
+
 });
