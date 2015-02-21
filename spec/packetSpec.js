@@ -122,4 +122,20 @@ describe("Packet Library", function() {
 
   });
 
+  describe("#toString", function() {
+
+    it ("converts the buffer to a readable string of bytes", function() {
+      var buffer = new Buffer([0x13, 0x02, 0xf2, 0xf3, 0xfa]);
+      expect(packet.readFromBuffer(buffer)).toBe(true);
+      expect(packet.toString()).toEqual("0x13, 0x02, 0xf2, 0xf3, 0xfa");
+    });
+
+    it ("implicitly converts the buffer to a readable string of bytes", function() {
+      var buffer = new Buffer([0x13, 0x02, 0xf2, 0xf3, 0xfa]);
+      expect(packet.readFromBuffer(buffer)).toBe(true);
+      expect("" + packet).toEqual("0x13, 0x02, 0xf2, 0xf3, 0xfa");
+    });
+
+  });
+
 });
