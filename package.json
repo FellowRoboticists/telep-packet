@@ -2,7 +2,7 @@
   "name": "telep-packet",
   "version": "0.1.0",
   "description": "Defines an object to simplify reading telep information off a serial port.",
-  "main": "telep-packet.js",
+  "main": "lib/telep-packet.js",
   "scripts": {
     "test": "jasmine"
   },
