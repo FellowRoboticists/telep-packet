@@ -138,4 +138,23 @@ describe("Packet Library", function() {
 
   });
 
+  describe("#packetBuffer", function() {
+
+    it ("should return only the relevant part of the packet", function() {
+      var buffer;
+      packet.append(0x02);
+      packet.append(0xf2);
+      packet.append(0xf3);
+      packet.complete();
+
+      buffer = packet.packetBuffer();
+      expect(buffer.length).toEqual(5);
+      expect(buffer[0]).toEqual(0x13);
+      expect(buffer[1]).toEqual(0x02);
+      expect(buffer[2]).toEqual(0xf2);
+      expect(buffer[3]).toEqual(0xf3);
+      expect(buffer[4]).toEqual(0xfa);
+    });
+  });
+
 });
